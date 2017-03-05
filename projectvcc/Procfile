@@ -1,1 +1,1 @@
-web: gunicorn projectvcc.wsgi
+web: gunicorn projectvcc.wsgi --log-file
