@@ -3,6 +3,10 @@
 
 from django.test import TestCase
 from .models import CreditCard
+from .validations import (
+	validate_digit_start, 
+	validate_digit_is_not_null,
+)
 
 class CreditCardTest(TestCase):
 	"""
@@ -63,3 +67,34 @@ class CreditCardTest(TestCase):
 		number_creditcard = self.get_number_valid()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
 		self.assertNotEqual(None, creditcard_visa.number)
+
+	def test_number_start_with_four(self):
+		number_creditcard = self.get_number_valid()
+		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
+		self.assertTrue(validate_digit_start(creditcard_visa))
+		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
+
+	def test_number_start_with_five(self):
+		number_creditcard = self.get_number_starting_with_five()
+		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
+		self.assertTrue(validate_digit_start(creditcard_visa))
+		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
+
+	def test_number_start_with_six(self):
+		number_creditcard = self.get_number_starting_with_six()
+		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
+		self.assertTrue(validate_digit_start(creditcard_visa))
+		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
+
+	def test_number_start_with_three(self):
+		number_creditcard = self.get_number_starting_with_three()
+		creditcard_visa = CreditCard(number=number_creditcard)
+		self.assertFalse(validate_digit_start(creditcard_visa))
+		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
+
+	def test_number_is_not_null(self):
+		creditcard_visa = CreditCard()
+		self.assertFalse(validate_digit_is_not_null(creditcard_visa))
+
+
+
