@@ -20,3 +20,5 @@ class CreditCard(models.Model):
 
 	def __str__(self):
 		return '%s' % (self.number)
+	def __unicode__(self):
+		return '%s' % (self.number)
