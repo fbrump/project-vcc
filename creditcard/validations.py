@@ -29,6 +29,12 @@ def validate_number_digits(creditCard):
 		return True
 	return False
 
+def validate_digits_are_number(digits):
+	result = re.findall(r'^-?[0-9]+$', str(digits))
+	if len(result) > 0:
+		return True
+	return False
+
 def validate_starting_with(number, digit):
 	"""
 		This method verifica if the number start with digit.
