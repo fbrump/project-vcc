@@ -16,6 +16,9 @@ def validate_digit_start(creditCard):
 	return False
 
 def validate_digit_is_not_null(creditCard):
+	"""
+		This method verifica if the number have any value.
+	"""
 	if (creditCard.number):
 		return True
 	return False
