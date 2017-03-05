@@ -20,6 +20,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^creditcard/$', views.creditcard_list, name='list'),
+    url(r'^$', views.creditcard_list, name='list'),
     url(r'^creditcard/(\d+)/$', views.creditcard_detail, name='detail'),
 ]

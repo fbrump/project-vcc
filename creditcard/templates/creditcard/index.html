@@ -1,0 +1,46 @@
+<!-- creditcard/templates/creditcard/index.html -->
+
+{# {% extends 'projectvcc/layout/base.html' %} #}
+{% load static %}
+{% load staticfiles %}
+
+{% block body %}
+    <section>
+    	<header>
+    		<h3>List of the credit cards</h3>
+    	</header>
+    	<!-- /header -->
+    	<article>
+    		<table>
+    			<thead>
+    				<th>
+    					<td>CreditCard</td>
+    					<td>Date Created</td>
+    					<td></td>
+    				</th>
+    			</thead>
+    			<tfoot>
+    				<tr>
+    					<td colspan="3"></td>
+    				</tr>
+    			</tfoot>
+    			<tbody>
+    				{% for item in cards %}
+    					<tr>
+    						<td>{{ item.number }}</td>
+    						<td>{{ item.date_created }}</td>
+    						<td>
+    							<a href="{% url 'detail' %}" title="Show details">details</a>
+    						</td>
+    					</tr>
+    				{% endfor %}
+    			</tbody>
+    		</table>
+    	</article>
+    	<!-- /article -->
+    </section>
+{% endblock body %}
+
+{% block scripts %}
+
+{% endblock scripts %}

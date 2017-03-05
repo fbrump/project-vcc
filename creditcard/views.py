@@ -6,12 +6,14 @@ from .models import CreditCard
 
 def creditcard_list(request):
 	"""
+		This method return the list of the all creditcards for show.
 	"""
 	cards = CreditCard.objects.all()
-	return render(request, 'creditcard/list.html', { 'cards': cards})
+	return render(request, 'creditcard/index.html', { 'cards': cards})
 
 def creditcard_detail(request, id):
 	"""
+		This method return the details of the creditcard for show.
 	"""
 	card = CreditCard.objects.get(id=id)
-	return render(request, 'creditcard/list.html', { 'card': card})
+	return render(request, 'creditcard/detail.html', { 'card': card})
