@@ -21,5 +21,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.creditcard_list, name='list'),
-    url(r'^creditcard/(\d+)/$', views.creditcard_detail, name='detail'),
+    url(r'^creditcard/(?P<id>[0-9]+)/$', views.creditcard_detail, name='detail'),
 ]

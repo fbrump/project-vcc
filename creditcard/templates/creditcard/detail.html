@@ -1,13 +1,19 @@
 <!-- creditcard/templates/creditcard/index.html -->
 
-{% extends 'projectvcc/layout/base.html' %}
-{% load static %}
+{% extends 'creditcard/base.html' %}
 {% load staticfiles %}
 
 {% block body %}
-    Details
-{% endblock body %}
+    <header class="well">
+		<h3>Details of the credit card</h3>
+	</header>
+	<article>
+		
+	</article>
+	<footer>
+		<a href="/" class="btn btn-default">Came back</a>
+	</footer>
+{% endblock %}
 
-{% block scripts %}
-
-{% endblock scripts %}
+{% block pageScripts %}
+{% endblock pageScripts %}
