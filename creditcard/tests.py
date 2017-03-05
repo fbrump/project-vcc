@@ -179,3 +179,6 @@ class CreditCardTest(TestCase):
 		digits = '5122-2368-7954-3214'
 		self.assertFalse(validate_digits_are_number(digits))
 
+	def test_digit_have_just_numbers(self):
+		digits = self.get_number_starting_with_six()
+		self.assertTrue(validate_digits_are_number(digits))
