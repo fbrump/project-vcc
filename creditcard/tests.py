@@ -2,5 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from django.test import TestCase
+from .models import CreditCard
 
-# Create your tests here.
+class CreditCardTest(object):
+	"""
+		docstring for CreditCardTest
+	"""
+	def test_create_credit_card(self):
+		pass
+		
