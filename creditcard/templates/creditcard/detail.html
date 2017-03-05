@@ -8,6 +8,7 @@
 		<h3>Details of the credit card</h3>
 	</header>
 	<article>
+		{% include "creditcard/_comeBack.html" %}
 		<form>
 			<div class="form-group">
 				<label for="id_number">Number</label>
@@ -20,7 +21,7 @@
 		</form>
 	</article>
 	<footer>
-		<a href="/" class="btn btn-default">Came back</a>
+		{% include "creditcard/_comeBack.html" %}
 	</footer>
 {% endblock %}
 
