@@ -23,6 +23,12 @@ def validate_digit_is_not_null(creditCard):
 		return True
 	return False
 
+def validate_number_digits(creditCard):
+	number = str(creditCard.number)
+	if (len(number) == 16):
+		return True
+	return False
+
 def validate_starting_with(number, digit):
 	"""
 		This method verifica if the number start with digit.

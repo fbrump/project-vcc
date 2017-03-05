@@ -6,6 +6,7 @@ from .models import CreditCard
 from .validations import (
 	validate_digit_start, 
 	validate_digit_is_not_null,
+	validate_number_digits
 )
 
 class CreditCardTest(TestCase):
@@ -23,7 +24,7 @@ class CreditCardTest(TestCase):
 		"""
 			This method get a number starting with number six (AMERICAN EXPRESS)
 		"""
-		return 342169971301304
+		return 374850035887914
 
 	def get_number_starting_with_five(self):
 		"""
@@ -36,6 +37,18 @@ class CreditCardTest(TestCase):
 			This method get a number starting with number six (DISCOVER)
 		"""
 		return 6011536275920491
+
+	def get_number_with_less_digits(self):
+		"""
+			This method get a number starting with number six (DISCOVER)
+		"""
+		return 6011536275
+
+	def get_number_with_more_digits(self):
+		"""
+			This method get a number starting with number six (DISCOVER)
+		"""
+		return 601153627592049148657
 
 	def create_credit_card(self, number):
 		"""
@@ -71,30 +84,51 @@ class CreditCardTest(TestCase):
 	def test_number_start_with_four(self):
 		number_creditcard = self.get_number_valid()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
+		# Assert
 		self.assertTrue(validate_digit_start(creditcard_visa))
 		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
+		self.assertTrue(validate_number_digits(creditcard_visa))
 
 	def test_number_start_with_five(self):
 		number_creditcard = self.get_number_starting_with_five()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
+		# Assert
 		self.assertTrue(validate_digit_start(creditcard_visa))
 		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
+		self.assertTrue(validate_number_digits(creditcard_visa))
 
 	def test_number_start_with_six(self):
 		number_creditcard = self.get_number_starting_with_six()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
+		# Assert
 		self.assertTrue(validate_digit_start(creditcard_visa))
 		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
+		self.assertTrue(validate_number_digits(creditcard_visa))
 
 	def test_number_start_with_three(self):
 		number_creditcard = self.get_number_starting_with_three()
 		creditcard_visa = CreditCard(number=number_creditcard)
+		# Assert
 		self.assertFalse(validate_digit_start(creditcard_visa))
 		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
+		self.assertFalse(validate_number_digits(creditcard_visa))
 
 	def test_number_is_not_null(self):
 		creditcard_visa = CreditCard()
 		self.assertFalse(validate_digit_is_not_null(creditcard_visa))
+
+	def test_number_digits(self):
+		number_creditcard = self.get_number_starting_with_five()
+		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
+		self.assertTrue(validate_number_digits(creditcard_visa))
+
+	def test_number_digits_with_more_digit(self):
+		creditcard_visa = CreditCard(number=self.get_number_with_more_digits())
+		self.assertFalse(validate_number_digits(creditcard_visa))
+
+	def test_number_digits_with_less_digit(self):
+		creditcard_visa = CreditCard(number=self.get_number_with_less_digits())
+		self.assertFalse(validate_number_digits(creditcard_visa))
 
 
 
