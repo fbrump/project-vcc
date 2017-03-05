@@ -82,6 +82,9 @@ class CreditCardTest(TestCase):
 		self.assertNotEqual(None, creditcard_visa.number)
 
 	def test_number_start_with_four(self):
+		"""
+			This method verificy if the credit card number is satrting with digit four
+		"""
 		number_creditcard = self.get_number_valid()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
 		# Assert
@@ -90,6 +93,9 @@ class CreditCardTest(TestCase):
 		self.assertTrue(validate_number_digits(creditcard_visa))
 
 	def test_number_start_with_five(self):
+		"""
+			This method verificy if the credit card number is satrting with digit five
+		"""
 		number_creditcard = self.get_number_starting_with_five()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
 		# Assert
@@ -98,6 +104,9 @@ class CreditCardTest(TestCase):
 		self.assertTrue(validate_number_digits(creditcard_visa))
 
 	def test_number_start_with_six(self):
+		"""
+			This method verificy if the credit card number is satrting with digit six
+		"""
 		number_creditcard = self.get_number_starting_with_six()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
 		# Assert
@@ -106,6 +115,9 @@ class CreditCardTest(TestCase):
 		self.assertTrue(validate_number_digits(creditcard_visa))
 
 	def test_number_start_with_three(self):
+		"""
+			This method verificy if the credit card number is satrting with digit three
+		"""
 		number_creditcard = self.get_number_starting_with_three()
 		creditcard_visa = CreditCard(number=number_creditcard)
 		# Assert
@@ -114,19 +126,31 @@ class CreditCardTest(TestCase):
 		self.assertFalse(validate_number_digits(creditcard_visa))
 
 	def test_number_is_not_null(self):
+		"""
+			This method verificy if the credit card number is not None or have value
+		"""
 		creditcard_visa = CreditCard()
 		self.assertFalse(validate_digit_is_not_null(creditcard_visa))
 
 	def test_number_digits(self):
+		"""
+			This method verificy if the credit card number have exactly 16 digits
+		"""
 		number_creditcard = self.get_number_starting_with_five()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
 		self.assertTrue(validate_number_digits(creditcard_visa))
 
 	def test_number_digits_with_more_digit(self):
+		"""
+			This method verificy if the credit card number have exactly 16 digits is not True
+		"""
 		creditcard_visa = CreditCard(number=self.get_number_with_more_digits())
 		self.assertFalse(validate_number_digits(creditcard_visa))
 
 	def test_number_digits_with_less_digit(self):
+		"""
+			This method verificy if the credit card number have exactly 16 digits is not True
+		"""
 		creditcard_visa = CreditCard(number=self.get_number_with_less_digits())
 		self.assertFalse(validate_number_digits(creditcard_visa))
 
