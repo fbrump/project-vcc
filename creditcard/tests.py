@@ -172,5 +172,10 @@ class CreditCardTest(TestCase):
 		digits = '4424444424442444'
 		self.assertFalse(validate_consecutive_repeated(digits))
 
+	def test_digit_is_all_number_and_have_hyphen_or_not(self):
+		digits = '5122-2368-7954 - 3214'
+		self.assertFalse(validate_digits_are_number(digits))
 
+		digits = '5122-2368-7954-3214'
+		self.assertFalse(validate_digits_are_number(digits))
 
