@@ -8,6 +8,7 @@ from .validations import (
 	validate_digit_is_not_null,
 	validate_number_digits,
 	validate_digits_are_number,
+	validate_consecutive_repeated,
 )
 
 class CreditCardTest(TestCase):
@@ -162,6 +163,14 @@ class CreditCardTest(TestCase):
 	def test_digit_is_all_number_digits_with_char(self):
 		digits = 'assdf5788965487'
 		self.assertFalse(validate_digits_are_number(digits))
+
+	def test_digit_with_three_consecutive_repeated(self):
+		digits = '4424424424442444'
+		self.assertTrue(validate_consecutive_repeated(digits))
+
+	def test_digit_with_four_consecutive_repeated(self):
+		digits = '4424444424442444'
+		self.assertFalse(validate_consecutive_repeated(digits))
 
 
 

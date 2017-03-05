@@ -35,6 +35,20 @@ def validate_digits_are_number(digits):
 		return True
 	return False
 
+def validate_consecutive_repeated(digits):
+	number = str(digits)
+	count = 0
+	old_digit = None
+	for digit in number:
+		if (old_digit == digit):
+			count = count + 1
+			if (count > 3):
+				return False
+		else:
+			count = 1
+			old_digit = digit
+	return True
+
 def validate_starting_with(number, digit):
 	"""
 		This method verifica if the number start with digit.
