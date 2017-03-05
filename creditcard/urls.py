@@ -22,4 +22,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.creditcard_list, name='list'),
     url(r'^creditcard/(?P<id>[0-9]+)/$', views.creditcard_detail, name='detail'),
+    url(r'^creditcard/create/$', views.creditcard_create, name='create'),
 ]

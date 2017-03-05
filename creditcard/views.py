@@ -17,3 +17,9 @@ def creditcard_detail(request, id):
 	"""
 	card = CreditCard.objects.get(id=id)
 	return render(request, 'creditcard/detail.html', { 'card': card})
+
+def creditcard_create(request):
+	"""
+		This method return the details of the creditcard for show.
+	"""
+	return render(request, 'creditcard/create.html')
