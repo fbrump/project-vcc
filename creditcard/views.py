@@ -33,7 +33,7 @@ def creditcard_create(request):
 				_number = get_just_numbers_typed(_form.data['number'])
 				_creditCard = CreditCard.objects.create(number=int(_number))
 				_creditCard.save()
-				creditcard_list(request)
+				return redirect('list')
 			else:
 				print('form is not valid')
 				messanges = _form.non_field_errors()
