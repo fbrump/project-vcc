@@ -15,16 +15,38 @@
 				</div>
 			</div>
 	  		<div class="panel-body">
-	  			<div class="alert alert-success" role="alert">...</div>
+	  			{% if messanges %}
+	  			<div class="alert alert-warning" role="alert">
+	  				<ul>
+	  					{% for message in messanges %}
+	  						<li>{{ message }}</li>
+	  					{% endfor %}
+	  					{# <li>42536258796157867       #17 digits in card number → Invalid</li>
+	  					<li>4424444424442444        #Consecutive digits are repeating 4 or more times → Invalid</li>
+	  					<li>5122-2368-7954 - 3214   #Separators other than '-' are used → Invalid</li>
+	  					<li>44244x4424442444        #Contains non digit characters → Invalid</li>
+	  					<li>0525362587961578        #Doesn't start with 4, 5 or 6 → Invalid</li> #}
+	  				</ul>
+	  			</div>
+	  			{% endif %}
 	  			<form action="POST">
-					<div class="form-group">
+	  				<div class="alert alert-info" role="alert">
+	  					<p>Enter with one number of Credit Card for insert/validade or input a file of text with all numbers of Credit Cards; one number on each line.</p>
+	  				</div>
+					<div class="form-group col-md-6">
 						<label for="id_number">Number</label>
-						<input type="text" class="form-control" id="id_number" name="number" placeholder="Number" value="">
+						<input type="text" class="form-control" id="id_number" name="number" placeholder="Input number Credit Card" value="" title="Enter with number of Credit Card you want create/validate">
+						<p class="help-block">Ex.: 4999588857774666/ 4999-5888-5777-4666</p>
 					</div>
-					<div class="form-group">
-						<label for="id_file">File text</label>
-						<input type="file" id="id_file" name="file">
-						<p class="help-block">Upload a file txt with multiple numbers of credit card</p>
+					<div class="form-group col-md-6">
+						<label for="id_numbers">File text</label>
+						<input type="file" id="id_numbers" name="numbers" title="Upload the file with all numbers of Credit Cards; one number on each line" />
+						<p class="help-block">Upload a file <code>txt</code> with multiple numbers of credit card</p>
+					</div>
+					<div class="form-group text-right">
+						<button type="submit" class="btn btn-primary" title="Click to create/validate number">
+							Crate/Validate
+						</button>
 					</div>
 				</form>
 	  		</div>
