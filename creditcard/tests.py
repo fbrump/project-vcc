@@ -90,9 +90,9 @@ class CreditCardTest(TestCase):
 		number_creditcard = self.get_number_valid()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
 		# Assert
-		self.assertTrue(validate_digit_start(creditcard_visa))
-		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
-		self.assertTrue(validate_number_digits(creditcard_visa))
+		self.assertTrue(validate_digit_start(creditcard_visa.number))
+		self.assertTrue(validate_digit_is_not_null(creditcard_visa.number))
+		self.assertTrue(validate_number_digits(creditcard_visa.number))
 
 	def test_number_start_with_five(self):
 		"""
@@ -101,9 +101,9 @@ class CreditCardTest(TestCase):
 		number_creditcard = self.get_number_starting_with_five()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
 		# Assert
-		self.assertTrue(validate_digit_start(creditcard_visa))
-		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
-		self.assertTrue(validate_number_digits(creditcard_visa))
+		self.assertTrue(validate_digit_start(creditcard_visa.number))
+		self.assertTrue(validate_digit_is_not_null(creditcard_visa.number))
+		self.assertTrue(validate_number_digits(creditcard_visa.number))
 
 	def test_number_start_with_six(self):
 		"""
@@ -112,9 +112,9 @@ class CreditCardTest(TestCase):
 		number_creditcard = self.get_number_starting_with_six()
 		creditcard_visa = CreditCard.objects.get(number=number_creditcard)
 		# Assert
-		self.assertTrue(validate_digit_start(creditcard_visa))
-		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
-		self.assertTrue(validate_number_digits(creditcard_visa))
+		self.assertTrue(validate_digit_start(creditcard_visa.number))
+		self.assertTrue(validate_digit_is_not_null(creditcard_visa.number))
+		self.assertTrue(validate_number_digits(creditcard_visa.number))
 
 	def test_number_start_with_three(self):
 		"""
@@ -123,16 +123,16 @@ class CreditCardTest(TestCase):
 		number_creditcard = self.get_number_starting_with_three()
 		creditcard_visa = CreditCard(number=number_creditcard)
 		# Assert
-		self.assertFalse(validate_digit_start(creditcard_visa))
-		self.assertTrue(validate_digit_is_not_null(creditcard_visa))
-		self.assertFalse(validate_number_digits(creditcard_visa))
+		self.assertFalse(validate_digit_start(creditcard_visa.number))
+		self.assertTrue(validate_digit_is_not_null(creditcard_visa.number))
+		self.assertFalse(validate_number_digits(creditcard_visa.number))
 
 	def test_number_is_not_null(self):
 		"""
 			This method verificy if the credit card number is not None or have value
 		"""
 		creditcard_visa = CreditCard()
-		self.assertFalse(validate_digit_is_not_null(creditcard_visa))
+		self.assertFalse(validate_digit_is_not_null(creditcard_visa.number))
 
 	def test_number_digits(self):
 		"""

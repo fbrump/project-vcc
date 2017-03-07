@@ -3,6 +3,8 @@
 
 from django.shortcuts import render
 from .models import CreditCard
+from .forms import CreditCardForm
+from .validations import get_just_numbers_typed
 
 def creditcard_list(request):
 	"""
@@ -24,6 +26,17 @@ def creditcard_create(request):
 	"""
 	messanges = []
 	if (request.method == 'POST'):
-		print(request.FILES)
-		_number = request.POST['number']
+		_form = CreditCardForm(data=request.POST, files=request.FILES)
+		try:
+			if (_form.is_valid()):
+				print('form is valid')
+				_number = get_just_numbers_typed(_form.data['number'])
+				_creditCard = CreditCard.objects.create(number=int(_number))
+				_creditCard.save()
+				creditcard_list(request)
+			else:
+				print('form is not valid')
+				messanges = _form.non_field_errors()
+		except Exception as e:
+			messanges.append(e.message)
 	return render(request, 'creditcard/create.html', { 'messanges': messanges })
