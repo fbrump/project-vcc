@@ -29,7 +29,8 @@
 	  				</ul>
 	  			</div>
 	  			{% endif %}
-	  			<form action="POST">
+	  			<form action="" method="POST" enctype="multipart/form-data">
+	  				{% csrf_token %}
 	  				<div class="alert alert-info" role="alert">
 	  					<p>Enter with one number of Credit Card for insert/validade or input a file of text with all numbers of Credit Cards; one number on each line.</p>
 	  				</div>

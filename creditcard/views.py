@@ -22,4 +22,8 @@ def creditcard_create(request):
 	"""
 		This method return the details of the creditcard for show.
 	"""
-	return render(request, 'creditcard/create.html')
+	messanges = []
+	if (request.method == 'POST'):
+		print(request.FILES)
+		_number = request.POST['number']
+	return render(request, 'creditcard/create.html', { 'messanges': messanges })
