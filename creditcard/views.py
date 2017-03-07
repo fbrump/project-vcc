@@ -38,5 +38,6 @@ def creditcard_create(request):
 				print('form is not valid')
 				messanges = _form.non_field_errors()
 		except Exception as e:
-			messanges.append(e.message)
+			print(e)
+			messanges.append(str(e))
 	return render(request, 'creditcard/create.html', { 'messanges': messanges })
