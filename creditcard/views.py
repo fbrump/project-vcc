@@ -1,7 +1,7 @@
 #project-vcc/creditcard/views.py
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import CreditCard
 from .forms import CreditCardForm
 from .validations import get_just_numbers_typed
