@@ -8,7 +8,6 @@ from .validations import get_just_numbers_typed
 
 import codecs
 import os
-import StringIO
 
 def creditcard_list(request):
 	"""
