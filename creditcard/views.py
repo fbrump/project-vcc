@@ -30,7 +30,11 @@ def creditcard_create(request):
 		try:
 			if (_form.is_valid()):
 				print('form is valid')
+				print(_form.data)
+				print(_form.data['number'])
 				_number = get_just_numbers_typed(_form.data['number'])
+				print('=== _number')
+				print(_number)
 				_creditCard = CreditCard.objects.create(number=int(_number))
 				_creditCard.save()
 				return redirect('list')
