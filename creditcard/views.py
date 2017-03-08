@@ -29,14 +29,7 @@ def creditcard_create(request):
 		_form = CreditCardForm(data=request.POST, files=request.FILES)
 		if (_form.is_valid()):
 			print('form is valid')
-			print(_form.data)
-			print(_form.data['number'])
 			_number = get_just_numbers_typed(_form.data['number'])
-			print('=== _number')
-			print(_number)
-			# _creditCard = CreditCard.objects.create(number=long(_number))
-			# _creditCard.save()
-			#return redirect('list')
 			messanges.append('Success!')
 		else:
 			print('form is not valid')
