@@ -36,7 +36,8 @@ def creditcard_create(request):
 			print(_number)
 			# _creditCard = CreditCard.objects.create(number=long(_number))
 			# _creditCard.save()
-			return redirect('list')
+			#return redirect('list')
+			messanges.append('Success!')
 		else:
 			print('form is not valid')
 			messanges = _form.non_field_errors()
