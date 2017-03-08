@@ -11,7 +11,7 @@ class CreditCard(models.Model):
 		docstring for CreditCard
 
 	"""
-	number = models.IntegerField(validators=[MaxValueValidator(9999999999999999)])
+	number = models.BigIntegerField() #validators=[MaxValueValidator(9999999999999999)]
 	date_created = models.DateTimeField(auto_now_add=True, blank=True)
 
 	class Meta:
